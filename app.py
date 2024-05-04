@@ -23,7 +23,7 @@ application.add_handler(start_handler)
 async def handle_webhook(request: Request):
     # Parse the JSON request body
     data = await request.json()
-
+    print(data)
     # Convert the data into a Telegram Update
     update = Update.de_json(data, application.bot)
 

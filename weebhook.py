@@ -1,6 +1,6 @@
 import requests
 
-bot_token = '7079362195:AAHcxwVQHrsVfVvpDJbNOn0_LCttV0gl0zs'
+bot_token = 'YOUR_BOT_TOKEN'
 webhook_url = 'https://telegram-bot-fs8x.onrender.com/webhook'
 
 # API URL for setting webhook
