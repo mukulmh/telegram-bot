@@ -7,7 +7,7 @@ import json
 
 app = FastAPI()
 
-bot_token = 'YOUR_BOT_TOKEN'
+bot_token = '7079362195:AAHcxwVQHrsVfVvpDJbNOn0_LCttV0gl0zs'
 
 application = Application.builder().token(bot_token).build()
 application.initialize()  # Initialize the Application instance
