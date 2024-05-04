@@ -1,6 +1,13 @@
 version: "3.8"
 
 services:
+  # Redis service
+  redis:
+    image: redis:latest
+    container_name: redis
+    ports:
+      - "6380:6379"
+
   # FastAPI and Celery app service
   app:
     build: .
@@ -9,6 +16,8 @@ services:
       sh -c 'uvicorn app:app --host 0.0.0.0 --port 5005'
     restart: always
     network_mode: "host"
+    depends_on:
+      - redis
 
   celery:
     build: .

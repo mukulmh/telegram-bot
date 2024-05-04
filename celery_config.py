@@ -2,11 +2,17 @@ from celery import Celery
 from telegram import Bot
 from telegram.error import TelegramError
 import asyncio
+import os
+from dotenv import load_dotenv
 
-celery_app = Celery(
+load_dotenv()
+CELERY_BROKER_URL=os.environ.get('CELERY_BROKER_URL')
+CELERY_RESULT_BACKEND=os.environ.get('CELERY_RESULT_BACKEND')
+
+celery_app = Celery(    
     "telegram_bot",
-    broker="redis://localhost:6379/0",  # Redis broker URL
-    backend="redis://localhost:6379/0",  # Redis backend URL (optional)
+    broker=CELERY_BROKER_URL,  # Redis broker URL
+    backend=CELERY_RESULT_BACKEND,  # Redis backend URL (optional)
 )
 
 
