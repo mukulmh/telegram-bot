@@ -44,5 +44,9 @@ async def handle_send_message(data: MessageData):
     )
     return {"task_id": task.id}
 
+@app.get("/")
+async def home(request: Request):
+    return {"message": "Success"}
+
 # To run the FastAPI application, use the following command in the terminal:
 # uvicorn app:app --host 0.0.0.0 --port 8000
