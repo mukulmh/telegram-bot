@@ -31,7 +31,7 @@ async def handle_webhook(request: Request):
     print(update)
 
     # Use the application to process the update
-    await application.update_queue.put(update)
+    await application.process_update(update)
     
     # Return a simple JSON response to acknowledge receipt of the update
     return {"status": "ok"}
