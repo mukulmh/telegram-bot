@@ -28,6 +28,7 @@ async def handle_webhook(request: Request):
     print(data)
     # Convert the data into a Telegram Update
     update = Update.de_json(data, application.bot)
+    print(update)
 
     # Use the application to process the update
     await application.update_queue.put(update)
