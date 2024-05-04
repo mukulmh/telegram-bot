@@ -2,7 +2,7 @@ from fastapi import FastAPI, Request, HTTPException
 from pydantic import BaseModel
 from celery_config import send_message_to_group
 from telegram import Update, Bot
-from telegram.ext import Application, CommandHandler
+from telegram.ext import Application, CommandHandler, ContextTypes
 import json
 
 app = FastAPI()
@@ -12,8 +12,10 @@ bot_token = 'YOUR_BOT_TOKEN'
 application = Application.builder().token(bot_token).build()
 application.initialize()  # Initialize the Application instance
 
-async def start(update: Update, context):
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     chat_id = update.effective_chat.id
+    print(chat_id)
+    # Send a welcome message back to the user
     await context.bot.send_message(chat_id=chat_id, text="Welcome to the bot!")
 
 start_handler = CommandHandler('start', start)
