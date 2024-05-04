@@ -10,6 +10,7 @@ app = FastAPI()
 bot_token = 'YOUR_BOT_TOKEN'
 
 application = Application.builder().token(bot_token).build()
+application.initialize()  # Initialize the Application instance
 
 async def start(update: Update, context):
     chat_id = update.effective_chat.id
@@ -27,7 +28,7 @@ async def handle_webhook(request: Request):
     update = Update.de_json(data, application.bot)
 
     # Use the application to process the update
-    await application.process_update(update)
+    await application.update_queue.put(update)
     
     # Return a simple JSON response to acknowledge receipt of the update
     return {"status": "ok"}
