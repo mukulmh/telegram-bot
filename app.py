@@ -14,10 +14,11 @@ def respond():
     update = telegram.Update.de_json(request.get_json(force=True), bot)
     chat_id = update.message.chat.id
     text = update.message.text.encode('utf-8').decode()
+    print("got text message :", text)
 
     if text == '/start':
         welcome_text = 'Welcome to the bot! Type /help to see the available commands.'
-        bot.sendMessage(chat_id=chat_id, text=text)
+        bot.sendMessage(chat_id=chat_id, text=welcome_text)
     elif text == '/help':
         help_text = 'Available commands:\n/start - Start the bot\n/help - Show the available commands'
         bot.sendMessage(chat_id=chat_id, text=help_text)
