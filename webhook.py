@@ -1,6 +1,10 @@
 import requests
+import os
+from dotenv import load_dotenv
 
-bot_token = 'YOUR_BOT_TOKEN'
+load_dotenv()
+bot_token = os.environ.get('BOT_TOKEN')
+
 webhook_url = 'https://telegram-bot-fs8x.onrender.com/webhook'
 
 # API URL for setting webhook
