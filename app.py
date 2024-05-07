@@ -30,7 +30,7 @@ def respond():
 
 @app.route('/setwebhook', methods=['GET', 'POST'])
 def set_webhook():
-    s = bot.setWebhook('https://https://telegram-bot-f9vw.onrender.com/webhook')
+    s = bot.setWebhook('https://telegram-bot-f9vw.onrender.com/webhook')
     print(s)
     if s:
         return "webhook setup ok"
